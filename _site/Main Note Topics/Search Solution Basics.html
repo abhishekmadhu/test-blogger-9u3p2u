@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Search Solution Basics</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+:root {
+  --text: #2c2416;
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --border: #ddd5c8;
+  --accent: #8b4513;
+  --accent-hover: #6b3410;
+  --code-bg: #f0ebe3;
+  --broken-link: #b8a99a;
+  --heading-color: #3d2b1f;
+  --footer-color: #8b7d6b;
+  --max-width: 44rem;
+  --font-body: 'EB Garamond', 'Georgia', 'Times New Roman', serif;
+  --font-heading: 'EB Garamond', 'Georgia', serif;
+  --font-code: 'Menlo', 'Consolas', 'Courier New', monospace;
+  --font-size: 1.125rem;
+  --line-height: 1.8;
+}
+
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--font-size);
+      line-height: var(--line-height);
+      color: var(--text);
+      background: var(--bg);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    nav {
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--heading-color, var(--text));
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      line-height: 1.3;
+    }
+
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.2rem; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: var(--accent-hover);
+    }
+
+    a.broken-link {
+      color: var(--broken-link);
+      text-decoration: line-through;
+      cursor: not-allowed;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin: 1rem 0;
+    }
+
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    code {
+      font-family: var(--font-code);
+      font-size: 0.875em;
+    }
+
+    :not(pre) > code {
+      background: var(--code-bg);
+      padding: 0.15em 0.35em;
+      border-radius: 3px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+      font-size: 0.925rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+
+    th {
+      background: var(--code-bg);
+      font-weight: 600;
+    }
+
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.5rem 1rem;
+      border-left: 3px solid var(--accent);
+      background: var(--code-bg);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.25rem;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--footer-color, #6b7280);
+    }
+
+    /* Index page styles */
+    .page-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .page-list li {
+      margin-bottom: 0.35rem;
+    }
+
+    .folder-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .folder-group h2 {
+      font-size: 1.1rem;
+      color: var(--footer-color, #6b7280);
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="/">&#x2190; All Pages</a>
+    </nav>
+    <article>
+      <h1>Search Solution Basics</h1>
+<p>Creation Timestamp: May 13, 2021 8:31 PM<br />
+Details: Learn how search works, navigate use cases, and optimize search results.<br />
+Estimated Hours: 1<br />
+Has Exam Weight?: No<br />
+Points: 300<br />
+Status: Done<br />
+Tags: Module<br />
+Timeline: May 16, 2021 → May 16, 2021</p>
+<h1>How it works</h1>
+<h2>When saving the records</h2>
+<p>When saving any record, Salesforce Search Engine</p>
+<ul>
+<li>Makes a copy of the record</li>
+<li>Breaks the record down into small pieces called &quot;tokens&quot;</li>
+<li>Saves the tokens in a &quot;Search index&quot;</li>
+</ul>
+<h2>When performing a search</h2>
+<p>When the user searches by writing &quot;search terms&quot; in the search bar, SSE</p>
+<ul>
+<li>Breaks the search term down into tokens</li>
+<li>Matches the tokens with the information in search index</li>
+<li>Ranks the results matched by relevance</li>
+<li>Returns the results to which the user has access</li>
+</ul>
+<p>Both SOQL and SOSL can be used in all cases. They can be executed through REST and SOAP APIs, and also through APEX.</p>
+<h1>Building Search for Common Use Cases</h1>
+<h2>Search Within a Single Object</h2>
+<pre><code class="language-jsx">FIND {term} RETURNING ObjectTypeName
+// term: whatever the user enters
+// ObjectTypeName is the API name of the object
+
+// Example:
+FIND {march 2016 email} RETURNING Campaign
+</code></pre>
+<h2>Search Within Multiple Objects</h2>
+<pre><code class="language-jsx">FIND {term} RETURNING ObjectTypeName1, ObjectTypeName2, ObjectTypeNameYouGetTheIdea
+
+// Comma separated list of object API names
+
+// Example
+FIND {recycled materials} RETURNING Product2, ContentVersion, FeedItem
+</code></pre>
+<h2>Search Within Custom Objects</h2>
+<p>Same as with normal objects</p>
+<p><code>FIND {pink hi\-top} RETURNING Merchandise__c</code></p>
+<h1>Optimize Search Results</h1>
+<h2>Limiting data that is searched</h2>
+<p><code>IN SearchGroup</code></p>
+<p>Use this to search for the term only in email type fields</p>
+<pre><code class="language-jsx">FIND {jsmith@cloudkicks.com} IN EMAIL FIELDS RETURNING Contact
+</code></pre>
+<p><code>FIND {term} RETURNING ObjectTypeName (FieldList ORDER BY Field LIMIT Limit OFFSET Offset)</code></p>
+<pre><code class="language-jsx">FIND {Cloud Kicks} RETURNING Account (Name, Industry ORDER BY Name LIMIT 10 OFFSET 25)
+</code></pre>
+<p><code>WITH</code> statements filter records by certain predefined fields.</p>
+<pre><code class="language-jsx">FIND {race} RETURNING KnowledgeArticleVersion
+    (Id, Title WHERE PublishStatus='online' and language='en_US')
+    WITH DATA CATEGORY Location__c AT America__c
+</code></pre>
+<h3>Summary</h3>
+<p><a class="broken-link">Search Keywords</a></p>
+<h2>Display Suggested Results</h2>
+<p>Use the API. Example:</p>
+<pre><code class="language-jsx">// Sample Query
+/vXX.X/search/suggestTitleMatches?q=race+tips&amp;language=en_US&amp;publishStatus=Online
+
+// Sample Response
+{
+  &quot;autoSuggestResults&quot; : [ {
+    &quot;attributes&quot; : {
+    &quot;type&quot; : &quot;KnowledgeArticleVersion&quot;,
+    &quot;url&quot; : &quot;/services/data/v30.0/sobjects/KnowledgeArticleVersion/ka0D00000004CcQ&quot;
+    },
+  &quot;Id&quot; : &quot;ka0D00000004CcQ&quot;,
+  &quot;UrlName&quot; : &quot;tips-for-your-first-trail-race&quot;,
+  &quot;Title&quot; : &quot;race tips&quot;,
+  &quot;KnowledgeArticleId&quot; : &quot;kA0D00000004Cfz&quot;,
+  &quot;isMasterLanguage&quot; : &quot;1&quot;,
+  } ],
+  &quot;hasMoreResults&quot; : false
+}
+</code></pre>
+
+    </article>
+    <footer>
+      Generated from Obsidian notes
+    </footer>
+  </div>
+</body>
+</html>

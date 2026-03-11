@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>All Pages</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+:root {
+  --text: #2c2416;
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --border: #ddd5c8;
+  --accent: #8b4513;
+  --accent-hover: #6b3410;
+  --code-bg: #f0ebe3;
+  --broken-link: #b8a99a;
+  --heading-color: #3d2b1f;
+  --footer-color: #8b7d6b;
+  --max-width: 44rem;
+  --font-body: 'EB Garamond', 'Georgia', 'Times New Roman', serif;
+  --font-heading: 'EB Garamond', 'Georgia', serif;
+  --font-code: 'Menlo', 'Consolas', 'Courier New', monospace;
+  --font-size: 1.125rem;
+  --line-height: 1.8;
+}
+
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--font-size);
+      line-height: var(--line-height);
+      color: var(--text);
+      background: var(--bg);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      color: var(--heading-color, var(--text));
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: var(--accent-hover);
+    }
+
+    .page-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .page-list li {
+      margin-bottom: 0.35rem;
+    }
+
+    .folder-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .folder-group h2 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--footer-color, #6b7280);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+    }
+
+    .folder-group h2::before {
+      content: '';
+      display: inline-block;
+      width: 1.1em;
+      height: 1.1em;
+      flex-shrink: 0;
+      background: currentColor;
+      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z'/%3E%3C/svg%3E");
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z'/%3E%3C/svg%3E");
+      mask-size: contain;
+      mask-repeat: no-repeat;
+    }
+
+    .page-list li a::before {
+      content: '';
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      margin-right: 0.4em;
+      vertical-align: -0.1em;
+      background: currentColor;
+      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cline x1='16' y1='13' x2='8' y2='13'/%3E%3Cline x1='16' y1='17' x2='8' y2='17'/%3E%3Cpolyline points='10 9 9 9 8 9'/%3E%3C/svg%3E");
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cline x1='16' y1='13' x2='8' y2='13'/%3E%3Cline x1='16' y1='17' x2='8' y2='17'/%3E%3Cpolyline points='10 9 9 9 8 9'/%3E%3C/svg%3E");
+      mask-size: contain;
+      mask-repeat: no-repeat;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--footer-color, #6b7280);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>All Pages</h1>
+    
+    <div class="folder-group">
+      <h2>Main Note Topics</h2>
+      <ul class="page-list">
+        
+        <li><a href="/Main Note Topics/Apex & .NET Basics.html">Apex & .NET Basics</a></li>
+        
+        <li><a href="/Main Note Topics/Apex Triggers.html">Apex Triggers</a></li>
+        
+        <li><a href="/Main Note Topics/Aura Components Basics.html">Aura Components Basics</a></li>
+        
+        <li><a href="/Main Note Topics/Aura Components Core Concepts.html">Aura Components Core Concepts</a></li>
+        
+        <li><a href="/Main Note Topics/Apex Specialist.html">Backdrop</a></li>
+        
+        <li><a href="/Main Note Topics/Debug Logs.html">Debug Logs</a></li>
+        
+        <li><a href="/Main Note Topics/Lightning Experience Development.html">Lightning Experience Development</a></li>
+        
+        <li><a href="/Main Note Topics/Process Automation Specialist.html">Process Automation Specialist</a></li>
+        
+        <li><a href="/Main Note Topics/Salesforce Flow.html">Salesforce Flow</a></li>
+        
+        <li><a href="/Main Note Topics/Salesforce Trailhead Study Notes.html">Salesforce Trailhead Study Notes</a></li>
+        
+        <li><a href="/Main Note Topics/Search Solution Basics.html">Search Solution Basics</a></li>
+        
+        <li><a href="/Main Note Topics/Triggers and Order of Execution.html">Triggers And Order Of Execution</a></li>
+        
+        <li><a href="/Main Note Topics/Visualforce Basics.html">Visualforce Basics</a></li>
+        
+      </ul>
+    </div>
+    
+    <div class="folder-group">
+      <h2>Main Note Topics/Aura Components Core Concepts/Difference between Aura and VFP request cycles</h2>
+      <ul class="page-list">
+        
+        <li><a href="/Main Note Topics/Aura Components Core Concepts/Difference between Aura and VFP request cycles/Difference in request cycles of Aura components and Visualforce.html">Difference in request cycles of Aura components and Visualforce</a></li>
+        
+      </ul>
+    </div>
+    
+    <div class="folder-group">
+      <h2>folder1</h2>
+      <ul class="page-list">
+        
+        <li><a href="/folder1/file1.html">File 1</a></li>
+        
+        <li><a href="/folder1/file2.html">File 2</a></li>
+        
+        <li><a href="/folder1/testimage-jpeg.html">testimage.jpeg</a></li>
+        
+      </ul>
+    </div>
+    
+    <div class="folder-group">
+      <h2>folder2</h2>
+      <ul class="page-list">
+        
+        <li><a href="/folder2/file1.html">What is a Cat?</a></li>
+        
+      </ul>
+    </div>
+    
+    <footer>
+      Generated from Obsidian notes
+    </footer>
+  </div>
+</body>
+</html>

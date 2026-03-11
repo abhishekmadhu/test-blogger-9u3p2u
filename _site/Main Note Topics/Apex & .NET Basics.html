@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apex & .NET Basics</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+:root {
+  --text: #2c2416;
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --border: #ddd5c8;
+  --accent: #8b4513;
+  --accent-hover: #6b3410;
+  --code-bg: #f0ebe3;
+  --broken-link: #b8a99a;
+  --heading-color: #3d2b1f;
+  --footer-color: #8b7d6b;
+  --max-width: 44rem;
+  --font-body: 'EB Garamond', 'Georgia', 'Times New Roman', serif;
+  --font-heading: 'EB Garamond', 'Georgia', serif;
+  --font-code: 'Menlo', 'Consolas', 'Courier New', monospace;
+  --font-size: 1.125rem;
+  --line-height: 1.8;
+}
+
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--font-size);
+      line-height: var(--line-height);
+      color: var(--text);
+      background: var(--bg);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    nav {
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--heading-color, var(--text));
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      line-height: 1.3;
+    }
+
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.2rem; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: var(--accent-hover);
+    }
+
+    a.broken-link {
+      color: var(--broken-link);
+      text-decoration: line-through;
+      cursor: not-allowed;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin: 1rem 0;
+    }
+
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    code {
+      font-family: var(--font-code);
+      font-size: 0.875em;
+    }
+
+    :not(pre) > code {
+      background: var(--code-bg);
+      padding: 0.15em 0.35em;
+      border-radius: 3px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+      font-size: 0.925rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+
+    th {
+      background: var(--code-bg);
+      font-weight: 600;
+    }
+
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.5rem 1rem;
+      border-left: 3px solid var(--accent);
+      background: var(--code-bg);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.25rem;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--footer-color, #6b7280);
+    }
+
+    /* Index page styles */
+    .page-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .page-list li {
+      margin-bottom: 0.35rem;
+    }
+
+    .folder-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .folder-group h2 {
+      font-size: 1.1rem;
+      color: var(--footer-color, #6b7280);
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="/">&#x2190; All Pages</a>
+    </nav>
+    <article>
+      <h1>Apex &amp; .NET Basics</h1>
+<p><a href="https://trailhead.salesforce.com/content/learn/modules/apex_basics_dotnet/mapping_concepts?trailmix_creator_id=strailhead&amp;trailmix_slug=prepare-for-your-salesforce-platform-developer-i-credential">https://trailhead.salesforce.com/content/learn/modules/apex_basics_dotnet/mapping_concepts?trailmix_creator_id=strailhead&amp;trailmix_slug=prepare-for-your-salesforce-platform-developer-i-credential</a></p>
+<p>Metadata-driven architecture: Code, configuration and apps are all specified as metadata in the Lightning Platform</p>
+<p>Tightly integrated with the database.</p>
+<p>User-interface, security, reporting, all build into the platform</p>
+<p>No need to worry about upgrading, tuning or scaling</p>
+<p>Basic syntax for defining a class:</p>
+<pre><code class="language-jsx">private | public | global
+[virtual | abstract | with sharing | without sharing]
+class ClassName [implements InterfaceNameList] [extends ClassName]
+{
+    // The body of the class
+}
+</code></pre>
+<p>Check out more on classes at:</p>
+<p><a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_understanding.htm">Classes | Apex Developer Guide | Salesforce Developers</a></p>
+<h3>Data Types</h3>
+<p>Primitive: Integer, Double, Long, Date, Datetime, String, Boolean, Id (autogenerated 18-character long)</p>
+<p>Strings are values (not references)</p>
+<p>Advanced: sObjects (Salesforce Objects)</p>
+<p>Enums: Only keys. Ordinals are assigned automatically based on order.</p>
+<pre><code class="language-jsx">public enum myEnums {
+            Enum1,
+            Enum2,
+            Enum3
+ }
+// Then access them like this
+Integer enumOrd = myEnums.Enum3.ordinal();
+</code></pre>
+<h3>Collections</h3>
+<p>List (arrays in Apex are synonymous with lists, and we can use them interchangeably)</p>
+<pre><code class="language-jsx">// Create directly
+List&lt;String&gt; myStrings =  new List&lt;String&gt; {'String1', 'String2', 'String3' };
+
+// Create empty, assign values later
+List&lt;String&gt; myStrings = new List&lt;String&gt;();
+myStrings.add('String1');
+myStrings.add('String2');
+myStrings.add('String3');
+
+// Create using SOQL response
+List&lt;Account&gt; myAccounts = [SELECT Id, Name FROM Account];
+
+// Accessing using indices
+List&lt;Account&gt; myAccounts = [SELECT Id, Name FROM Account];
+String firstAccount = myAccounts[0].Name;
+</code></pre>
+<p>Set</p>
+<ul>
+<li>No duplicates</li>
+</ul>
+<pre><code class="language-jsx">Set&lt;ID&gt; accountIds = new Set&lt;ID&gt;{'001d000000BOaHSAA1','001d000000BOaHTAA1'};
+List&lt;Account&gt; accounts = [SELECT Name FROM Account WHERE Id IN :accountIds];
+</code></pre>
+<p>Map</p>
+<ul>
+<li>Key-Value pairs (like python dictionary)</li>
+<li>Keys must be unique</li>
+</ul>
+<pre><code class="language-jsx">// Create a map where keys are IDs,
+// and the values are corresponding sObjects (Account)
+Map&lt;Id, Account&gt; accountMap = new Map&lt;Id, Account&gt;(
+	[SELECT Id, Name FROM Account]
+);
+
+// Then the accounts can be accessed using the IDs like this
+Id accId = '001d000000BOaHSAA1';
+Account account = accountMap.get(accId);
+</code></pre>
+<h2>Challenge</h2>
+<pre><code class="language-jsx">public class AccountUtils {
+    public static List&lt;Account&gt; accountsByState(String billingState){
+        List&lt;Account&gt; accounts = new List&lt;Account&gt;(
+            [SELECT Id, Name FROM Account WHERE BillingState=:billingState]
+        );
+        return accounts;
+    }
+}
+</code></pre>
+<h1>Understand Execution Context</h1>
+<ul>
+<li><p>What is execution context?</p>
+<p>The execution context represents the time between when the code is executed and when it ends.</p>
+</li>
+</ul>
+<p><a class="broken-link">Methods of invoking Apex.png</a></p>
+<p>Trigger syntax</p>
+<pre><code class="language-jsx">trigger TriggerName on ObjectName (trigger_events) {
+   // code_block
+}
+</code></pre>
+<h2>Execution context challenge solution</h2>
+<pre><code class="language-jsx">public class AccountTriggerHandler {
+    public static void CreateAccounts(List&lt;Account&gt; accounts){
+        for(Account account: accounts){
+            account.ShippingState = account.BillingState;
+        }
+    }
+}
+</code></pre>
+<pre><code class="language-jsx">trigger AccountTrigger on Account (before insert) {
+    System.debug('Trigger AccountTrigger run start');
+    if(Trigger.isBefore &amp;&amp; Trigger.isInsert){
+    	AccountTriggerHandler.CreateAccounts(Trigger.New);
+    }
+}
+</code></pre>
+<pre><code class="language-jsx">@isTest
+public class AccountTriggerTest {
+	@IsTest
+    static void test(){
+    	List&lt;Account&gt; accounts = new List&lt;Account&gt;();
+        for (Integer i = 0; i&lt;200; i++){
+            accounts.add(
+            	new Account(
+                	Name='Account',
+                    BillingState='CA'
+                )
+            );
+        }
+        insert accounts;
+
+        //Test.startTest();
+        //Database.SaveResult result = Database.insert(accounts);
+        //Test.stopTest();
+
+        List&lt;Account&gt; saved = new List&lt;Account&gt;(
+        	[SELECT Id, ShippingState FROM Account where BillingState='CA']
+        );
+
+        for (Account a: saved){
+            System.assertEquals('CA', a.ShippingState, 'Shipping state is not CA');
+        }
+    }
+
+}
+</code></pre>
+<h2>Using Asynchronous APEX</h2>
+<p>(The following topics need their own pages, that should be linked here)</p>
+<h3><code>@future</code> methods:</h3>
+<p>Must be <code>static</code> and <code>void</code></p>
+<h3>Batch or Scheduled APEX</h3>
+<h3>Queue-able APEX</h3>
+<h2>Debug and Run Diagnostics</h2>
+<p>First level of debugging is APEX debug logs.</p>
+<p>(Need a new page to summarise debugging methods)</p>
+
+    </article>
+    <footer>
+      Generated from Obsidian notes
+    </footer>
+  </div>
+</body>
+</html>

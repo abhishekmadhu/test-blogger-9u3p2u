@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aura Components Core Concepts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+:root {
+  --text: #2c2416;
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --border: #ddd5c8;
+  --accent: #8b4513;
+  --accent-hover: #6b3410;
+  --code-bg: #f0ebe3;
+  --broken-link: #b8a99a;
+  --heading-color: #3d2b1f;
+  --footer-color: #8b7d6b;
+  --max-width: 44rem;
+  --font-body: 'EB Garamond', 'Georgia', 'Times New Roman', serif;
+  --font-heading: 'EB Garamond', 'Georgia', serif;
+  --font-code: 'Menlo', 'Consolas', 'Courier New', monospace;
+  --font-size: 1.125rem;
+  --line-height: 1.8;
+}
+
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--font-size);
+      line-height: var(--line-height);
+      color: var(--text);
+      background: var(--bg);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    nav {
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--heading-color, var(--text));
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      line-height: 1.3;
+    }
+
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.2rem; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: var(--accent-hover);
+    }
+
+    a.broken-link {
+      color: var(--broken-link);
+      text-decoration: line-through;
+      cursor: not-allowed;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin: 1rem 0;
+    }
+
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    code {
+      font-family: var(--font-code);
+      font-size: 0.875em;
+    }
+
+    :not(pre) > code {
+      background: var(--code-bg);
+      padding: 0.15em 0.35em;
+      border-radius: 3px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+      font-size: 0.925rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+
+    th {
+      background: var(--code-bg);
+      font-weight: 600;
+    }
+
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.5rem 1rem;
+      border-left: 3px solid var(--accent);
+      background: var(--code-bg);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.25rem;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--footer-color, #6b7280);
+    }
+
+    /* Index page styles */
+    .page-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .page-list li {
+      margin-bottom: 0.35rem;
+    }
+
+    .folder-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .folder-group h2 {
+      font-size: 1.1rem;
+      color: var(--footer-color, #6b7280);
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="/">&#x2190; All Pages</a>
+    </nav>
+    <article>
+      <h1>Aura Components Core Concepts</h1>
+<h1>Bundles and the Request Lifecycle</h1>
+<h2>Core Concepts</h2>
+<p>Visualforce and Aura are different in architecture. Not everything maps cleanly between them.</p>
+<h2>Concept of Page vs Bundle</h2>
+<p>VFPs are stored as a single entity in salesforce ⇒ &quot;ApexPage&quot;. the controller or static resources or extensions are <em>referenced and not included</em> in the VFP.</p>
+<p>Aura components have 8 artefacts and separate metadata (total 9). Each individual component is stored in a bundle that <em>includes</em> resources.</p>
+<h2>Concept of Server-Side vs Client-Side</h2>
+<p>VFP is server-side, so the server evaluates all expressions <code>{! }</code> and everything else, creates the final HTML markup, and sends that to the browser for display.</p>
+<p>Aura Components are client-side, so the browser sends all information (static resources, javascript, data) to the browser. The browser runs the JS, and renders the resulting HTML into an existing &quot;page&quot;. Expression evaluation, global variables, controller properties—those are all resolved on the client (browser).</p>
+<p><a class="broken-link">02. Areas/Studies/Topics/Salesforce/Main Topics/Aura Components Core Concepts/Untitled.png</a></p>
+<p><a class="broken-link">02. Areas/Studies/Topics/Salesforce/Main Topics/Aura Components Core Concepts/Untitled 1.png</a></p>
+<p><a class="broken-link">Difference between Aura and VFP request cycles</a></p>
+<h1>Architectural Concepts</h1>
+<h2>Concept of Page-by-Page vs Single-Page Applications (SPA)</h2>
+<p>Instead of getting &quot;pages&quot; as in VFP, Aura components work with one single page, and a Javascript app that runs and updates the user interface of the same page depending on the &quot;<em>state</em>&quot;.</p>
+<p>The SPA knows which components to load for each state, and those components know how to draw, or render, themselves.</p>
+<p>Key takeaway: Navigation is very different in Aura components. Depending on how complex your app is and where it runs, you might never need to worry about navigation. Say goodbye to PageReference, $Action, and the anti-pattern of hand-constructed URLs. (The horror!)</p>
+<h2>Concept of Page vs Components</h2>
+<p>Aggregating VFP pages into large pages is horrible and problematic.</p>
+<p>Aura components can easily be put one into another.</p>
+<h2>Concept of Component vs. Component</h2>
+<p>Few of the biggest differences. (copied. Need to summarise)</p>
+<ul>
+<li>Aura components can fire and receive events to communicate between components. You can work with framework or container events, or define your own. You write event handlers, and the framework takes care of the details of invoking them when the right event occurs. This is <em>huge,</em> and opens up entirely new frontiers in the design of your apps.There’s nothing comparable in Visualforce, unless you roll it yourself. At which point, congratulations, you have your own framework! Now you need an ironic name for it, a GitHub repo, and a hipster hat.</li>
+<li>The Aura component bundle structure has separate artifacts for separate functions and “auto-wires” them together. Being able to group the essential dependencies of a component, while keeping different elements separate, is a terrific organization tool. Value providers and so on makes it easy to use the different elements with minimal ceremony.Again, getting something comparable in Visualforce means you’re writing framework code, not feature code.</li>
+<li>Aura components can be used in more contexts. Indeed, because it’s client-side code, you can use Lightning Out to pull your “Salesforce” features into other, completely <em>not</em> Salesforce apps and contexts—can you say SharePoint? Server-bound Visualforce runs only on Salesforce.</li>
+</ul>
+<h2>Concept of Application Containers</h2>
+<p>Distinct containers where your code might run.</p>
+<ul>
+<li>Salesforce Classic</li>
+<li>Visualforce</li>
+<li>Salesforce App</li>
+<li>Lightning Experience</li>
+<li>Lightning App Builder (LAB)</li>
+<li>Lightning console apps</li>
+<li>Communities</li>
+<li>Lightning Components for Visualforce (LC4VF)</li>
+<li>Lightning Out</li>
+<li>Lightning for Outlook and Lightning for Gmail</li>
+<li>Stand-alone my.app</li>
+</ul>
+<h2>Container Services</h2>
+<p>If you fire an event in a container where nothing is listening, does it have an effect? <em><strong>No</strong></em>. What’s the work-around? Write your own container service to create records, and an event handler to catch the event and dispatch it to your custom service.</p>
+<h2>Container Containment</h2>
+<p>Your component can only count on the services of the container it runs in. If you create a component for multiple contexts, you need multiple code paths to account for different sets of services. See <a href="https://developer.salesforce.com/blogs/developer-relations/2016/02/lightning-components-visualforce-lightning.html">Lightning Components in Visualforce with Lightning Out</a> for an example of this technique.</p>
+<hr />
+<h1>Coding Concepts</h1>
+<h2>Concept of Controllers</h2>
+<p>No standard controller in Aura components (which is present in VFP)</p>
+<p>VFP controllers always run on the server side. Aura custom controllers can run in either the server or the client side.</p>
+<p><a class="broken-link">02. Areas/Studies/Topics/Salesforce/Main Topics/Aura Components Core Concepts/Untitled 2.png</a></p>
+<p>VF Controllers</p>
+<p><a class="broken-link">02. Areas/Studies/Topics/Salesforce/Main Topics/Aura Components Core Concepts/Untitled 3.png</a></p>
+<p>Aura Components Controller</p>
+<p>While creating VFP and controllers, always use JS remoting and APEX <code>@RemoteAction</code> as that helps in later migrating to Aura components.</p>
+<p>Lightning Data Service (LDS) is only available in Aura Components, which is close to standard controllers in VF. <a href="https://developer.salesforce.com/docs/atlas.en-us.224.0.lightning.meta/lightning/data_service.htm">Read more here.</a></p>
+<h2>Concept of Actions</h2>
+<h2>Concept of Properties vs. Attributes vs. “Expandos”</h2>
+<h2>Component Attributes</h2>
+<pre><code class="language-jsx">// Declaration
+&lt;aura:attribute name=&quot;myAttribute&quot; type=&quot;Integer&quot;/&gt;
+
+// Reference using standard syntax
+{!v.myAttribute}
+
+// Getting and setting example in JS
+({
+    myAction : function(component, event, helper) {
+        var counter = component.get(&quot;v.myAttribute&quot;);
+        counter++;
+        component.set(&quot;v.myAttribute&quot;, counter);
+    },
+})
+</code></pre>
+<p>Make attributes private, otherwise it will become part of component's public API.</p>
+<h2>JavaScript Expandos and Private Attributes</h2>
+<p>Quick JS way to set values on the component instance:</p>
+<pre><code class="language-jsx">component._myExpando = &quot;A new string variable&quot;;
+</code></pre>
+<p>Recommended to not use as they can cause memory leaks ⇒ Instead, use component attributes, and set access level to Private</p>
+<h2>Concept of Method Calls vs Events</h2>
+<p>Let’s conclude with two specific bits of advice.</p>
+<ul>
+<li><strong>Give the principles of composition and loose coupling a fair shake and some time, and you’ll grow as a developer.</strong>The approach is different than what you’re used to with Visualforce. Some would say it’s harder, but we think it’s a matter of learning and experience.</li>
+<li><strong>Don’t treat methods the same as you would in Visualforce.</strong> You’ll inevitably discover that you can publish and call methods in your Aura components. It’s tempting, when you run into a design challenge, to fall back on what you know. Resist temptation. Aura component methods <em>do</em> have their appropriate uses. Use them when they’re the right tool for the job. Just don’t make them the proverbial hammer that you solve every problem with.</li>
+</ul>
+<h2>Questions</h2>
+<ul>
+<li><p>Do Aura components have controllers that are analogous to standard and custom controllers in Visualforce?</p>
+<p>No. LDS is somewhat similar in terms of functionality, but very different in most aspects.</p>
+</li>
+<li><p>Which punctuation symbol is the #1 source of syntax errors in Aura component controller code? (. or , or : or %)</p>
+<p>the comma</p>
+</li>
+<li><p>What is the mechanism for loose coupling in the Lightning framework?</p>
+<p>Events</p>
+</li>
+</ul>
+<hr />
+
+    </article>
+    <footer>
+      Generated from Obsidian notes
+    </footer>
+  </div>
+</body>
+</html>

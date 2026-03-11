@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aura Components Basics</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+:root {
+  --text: #2c2416;
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --border: #ddd5c8;
+  --accent: #8b4513;
+  --accent-hover: #6b3410;
+  --code-bg: #f0ebe3;
+  --broken-link: #b8a99a;
+  --heading-color: #3d2b1f;
+  --footer-color: #8b7d6b;
+  --max-width: 44rem;
+  --font-body: 'EB Garamond', 'Georgia', 'Times New Roman', serif;
+  --font-heading: 'EB Garamond', 'Georgia', serif;
+  --font-code: 'Menlo', 'Consolas', 'Courier New', monospace;
+  --font-size: 1.125rem;
+  --line-height: 1.8;
+}
+
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--font-size);
+      line-height: var(--line-height);
+      color: var(--text);
+      background: var(--bg);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    nav {
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--heading-color, var(--text));
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      line-height: 1.3;
+    }
+
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.2rem; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: var(--accent-hover);
+    }
+
+    a.broken-link {
+      color: var(--broken-link);
+      text-decoration: line-through;
+      cursor: not-allowed;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin: 1rem 0;
+    }
+
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    code {
+      font-family: var(--font-code);
+      font-size: 0.875em;
+    }
+
+    :not(pre) > code {
+      background: var(--code-bg);
+      padding: 0.15em 0.35em;
+      border-radius: 3px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+      font-size: 0.925rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+
+    th {
+      background: var(--code-bg);
+      font-weight: 600;
+    }
+
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.5rem 1rem;
+      border-left: 3px solid var(--accent);
+      background: var(--code-bg);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.25rem;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--footer-color, #6b7280);
+    }
+
+    /* Index page styles */
+    .page-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .page-list li {
+      margin-bottom: 0.35rem;
+    }
+
+    .folder-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .folder-group h2 {
+      font-size: 1.1rem;
+      color: var(--footer-color, #6b7280);
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="/">&#x2190; All Pages</a>
+    </nav>
+    <article>
+      <h1>Aura Components Basics</h1>
+<p>Creation Timestamp: May 14, 2021 4:16 PM<br />
+Date Finished: May 15, 2021<br />
+Details: Learning about aura components and how they are useful<br />
+Estimated Hours: 4<br />
+Has Exam Weight?: No<br />
+Status: Done<br />
+Tags: Module<br />
+Timeline: May 14, 2021</p>
+<h1>Attributes and Expressions</h1>
+<p><code>helloMessage</code> component being &quot;called&quot; with an attribute:</p>
+<pre><code class="language-jsx">&lt;aura:component&gt;
+    &lt;c:helloMessage message=&quot;You look nice today.&quot;/&gt;
+&lt;/aura:component&gt;
+</code></pre>
+<p><code>helloMessage</code> component with expressions that accept a <code>String</code> named <code>message</code> and then displays it:</p>
+<pre><code class="language-jsx">&lt;aura:component&gt;
+    &lt;aura:attribute name=&quot;message&quot; type=&quot;String&quot;/&gt;
+    &lt;p&gt;Hello! {!v.message}&lt;/p&gt;
+&lt;/aura:component&gt;
+
+// The expressions support operations as well.
+&lt;aura:component&gt;
+    &lt;aura:attribute name=&quot;message&quot; type=&quot;String&quot;/&gt;
+    &lt;p&gt;{!'Hello! ' + v.message}&lt;/p&gt;
+&lt;/aura:component&gt;
+</code></pre>
+<h2>Challenge solution</h2>
+<pre><code class="language-jsx">&lt;aura:component&gt;
+    &lt;aura:attribute name='item' type='Camping_Item__c' required=&quot;true&quot;/&gt;
+    &lt;p&gt;Name:
+        &lt;ui:outputText value=&quot;{!v.item.Name}&quot;/&gt;
+    &lt;/p&gt;
+    &lt;p&gt;Price:
+        &lt;lightning:formattedNumber value=&quot;{! v.item.Price__c }&quot; style=&quot;currency&quot;/&gt;
+    &lt;/p&gt;
+    &lt;p&gt;Quantity:
+        &lt;lightning:formattedNumber value=&quot;{! v.item.Quantity__c }&quot; style=&quot;number&quot;/&gt;
+    &lt;/p&gt;
+    &lt;p&gt;{! 'Packed: ' + v.item.Packed}&lt;/p&gt;
+
+    &lt;lightning:input type=&quot;toggle&quot;
+        label=&quot;Packed?&quot;
+        name=&quot;packed&quot;
+        checked=&quot;{!v.item.Packed__c}&quot;
+    /&gt;
+
+&lt;/aura:component&gt;
+</code></pre>
+<hr />
+<h1>Handling Actions with Controllers</h1>
+<h2>Controllers</h2>
+<p>A controller is a collection of code that defines your app’s behavior when “things happen”, in which we have logic to handle each &quot;action&quot; (action-handlers) which are generally &quot;mapped&quot; to the events/actions.</p>
+<p>Lightning components are mostly <em>View-Controller-Controller-Database</em> architecture.</p>
+<p><a class="broken-link">02. Areas/Studies/Topics/Salesforce/Main Topics/Aura Components Basics/Untitled.png</a></p>
+<h2>Action Handlers</h2>
+<p><a class="broken-link">02. Areas/Studies/Topics/Salesforce/Main Topics/Aura Components Basics/Untitled 1.png</a></p>
+<p>Function signature</p>
+<pre><code class="language-jsx">handleEventXyz: function(component, event, helper)
+</code></pre>
+<p>We called get() on btnClicked, the <code>&lt;lightning:button&gt;</code> that’s inside helloMessageInteractive. We’re calling set() on component—the helloMessageInteractive component itself. This is a pattern you’ll repeat in virtually every component you create</p>
+<p><a class="broken-link">02. Areas/Studies/Topics/Salesforce/Main Topics/Aura Components Basics/Untitled 2.png</a></p>
+<h2>Function Chaining, Rewiring, and Simple Debugging</h2>
+<h3>Chaining calls</h3>
+<pre><code class="language-jsx">({
+    handleClick: function(component, event, helper) {
+        let btnClicked = event.getSource();         // the button
+        let btnMessage = btnClicked.get(&quot;v.label&quot;); // the button's label
+        component.set(&quot;v.message&quot;, btnMessage);     // update our message
+    },
+		handleClick2: function(component, event, helper) {
+        let newMessage = event.getSource().get(&quot;v.label&quot;);
+        component.set(&quot;v.message&quot;, newMessage);
+    },
+    handleClick3: function(component, event, helper) {
+        component.set(&quot;v.message&quot;, event.getSource().get(&quot;v.label&quot;));
+    }
+})
+</code></pre>
+<h2>Resources</h2>
+<ul>
+<li><a href="https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/lightning_overview.htm">Working with Base Lightning Components</a></li>
+<li><a href="https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/lightning_base_events.htm">Event Handling in Base Lightning Components</a></li>
+<li><a href="https://developer.salesforce.com/docs/component-library/bundle/lightning:button/documentation">lightning:button Documentation</a></li>
+<li><a href="https://developer.salesforce.com/docs/component-library/bundle/lightning:input/documentation">lightning:input Documentation</a></li>
+<li><a href="https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/events_and_actions.htm">Actions and Events</a></li>
+<li><a href="https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/js_client_side_controller.htm">Handling Events with Client-Side Controllers</a></li>
+<li><a href="https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/js_cb_which_button_pressed.htm">Which Button Was Pressed?</a></li>
+<li><a href="https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/aura_debug_mode.htm">Enable Debug Mode for Lightning Components</a></li>
+</ul>
+<h2>Solution for assessment</h2>
+<pre><code class="language-jsx">&lt;aura:component&gt;
+    &lt;aura:attribute name='item' type='Camping_Item__c' required=&quot;true&quot;/&gt;
+    &lt;aura:attribute name=&quot;disabled&quot; type=&quot;boolean&quot; default=&quot;true&quot;/&gt;
+    &lt;p&gt;Name:
+        &lt;ui:outputText value=&quot;{!v.item.Name}&quot;/&gt;
+    &lt;/p&gt;
+    &lt;p&gt;Price:
+        &lt;lightning:formattedNumber value=&quot;{! v.item.Price__c }&quot; style=&quot;currency&quot;/&gt;
+    &lt;/p&gt;
+    &lt;p&gt;Quantity:
+        &lt;lightning:formattedNumber value=&quot;{! v.item.Quantity__c }&quot; style=&quot;number&quot;/&gt;
+    &lt;/p&gt;
+    &lt;p&gt;{! 'Packed: ' + v.item.Packed}&lt;/p&gt;
+
+    &lt;lightning:input type=&quot;toggle&quot;
+        label=&quot;Packed?&quot;
+        name=&quot;packed&quot;
+        checked=&quot;{!v.item.Packed__c}&quot;
+    /&gt;
+
+    &lt;lightning:button
+        label=&quot;Packed!&quot;
+        onclick=&quot;{!c.packItem}&quot;
+        disabled=&quot;{!v.disabled}&quot;
+    /&gt;
+
+&lt;/aura:component&gt;
+</code></pre>
+<pre><code class="language-jsx">({
+    packItem : function(component, event, helper) {
+        component.set('v.item.Packed__c', true);
+        component.set('v.disabled', true);
+    }
+})
+</code></pre>
+<h1>Input Data Using Forms</h1>
+<h2>Creating the forms</h2>
+<p>To make sure that the application uses SLDS (Salesforce Lightning Design System) at all possible times, extend your <code>harness</code> application as follows</p>
+<pre><code class="language-html">&lt;aura:application extends=&quot;force:slds&quot;&gt;
+        &lt;!-- This component is the real &quot;app&quot; --&gt;
+        &lt;!-- c:expenses/ --&gt;
+&lt;/aura:application&gt;
+</code></pre>
+<p>aura:id is for adding a locally unique ID on each tag it is added to. This is useful in cases where we want to access all that data as an array at once in JS.</p>
+<p>After the form is created, Lightning Components framework will let us treat the new object in JavaScript and markup like it is a record from Salesforce, even though we did not load it from Salesforce.</p>
+<ul>
+<li><p>The forms area looks somewhat like this. (expand to view an example from Trailhead)</p>
+<pre><code class="language-jsx">&lt;!-- CREATE NEW EXPENSE --&gt;
+    &lt;div aria-labelledby=&quot;newexpenseform&quot;&gt;
+        &lt;!-- BOXED AREA --&gt;
+        &lt;fieldset class=&quot;slds-box slds-theme_default slds-container_small&quot;&gt;
+        &lt;legend id=&quot;newexpenseform&quot; class=&quot;slds-text-heading_small
+          slds-p-vertical_medium&quot;&gt;
+          Add Expense
+        &lt;/legend&gt;
+        &lt;!-- CREATE NEW EXPENSE FORM --&gt;
+        &lt;form class=&quot;slds-form_stacked&quot;&gt;
+            &lt;lightning:input aura:id=&quot;expenseform&quot; label=&quot;Expense Name&quot;
+                             name=&quot;expensename&quot;
+                             value=&quot;{!v.newExpense.Name}&quot;
+                             required=&quot;true&quot;/&gt;
+            &lt;lightning:input type=&quot;number&quot; aura:id=&quot;expenseform&quot; label=&quot;Amount&quot;
+                             name=&quot;expenseamount&quot;
+                             min=&quot;0.1&quot;
+                             formatter=&quot;currency&quot;
+                             step=&quot;0.01&quot;
+                             value=&quot;{!v.newExpense.Amount__c}&quot;
+                             messageWhenRangeUnderflow=&quot;Enter an amount that's at least $0.10.&quot;/&gt;
+            &lt;lightning:input aura:id=&quot;expenseform&quot; label=&quot;Client&quot;
+                             name=&quot;expenseclient&quot;
+                             value=&quot;{!v.newExpense.Client__c}&quot;
+                             placeholder=&quot;ABC Co.&quot;/&gt;
+            &lt;lightning:input type=&quot;date&quot; aura:id=&quot;expenseform&quot; label=&quot;Expense Date&quot;
+                             name=&quot;expensedate&quot;
+                             value=&quot;{!v.newExpense.Date__c}&quot;/&gt;
+            &lt;lightning:input type=&quot;checkbox&quot; aura:id=&quot;expenseform&quot; label=&quot;Reimbursed?&quot;
+                             name=&quot;expreimbursed&quot;
+                             checked=&quot;{!v.newExpense.Reimbursed__c}&quot;/&gt;
+            &lt;lightning:button label=&quot;Create Expense&quot;
+                              class=&quot;slds-m-top_medium&quot;
+                              variant=&quot;brand&quot;
+                              onclick=&quot;{!c.clickCreate}&quot;/&gt;
+        &lt;/form&gt;
+        &lt;!-- / CREATE NEW EXPENSE FORM --&gt;
+      &lt;/fieldset&gt;
+      &lt;!-- / BOXED AREA --&gt;
+    &lt;/div&gt;
+    &lt;!-- / CREATE NEW EXPENSE --&gt;
+</code></pre>
+</li>
+</ul>
+<h2>Handling Form Submission in an Action Handler</h2>
+<ul>
+<li><p>An example to handle the creation of an expense record. This corresponds to the form in <a class="broken-link">the section above</a>.</p>
+<pre><code class="language-jsx">({
+    clickCreate: function(component, event, helper) {
+        let validExpense = component.find('expenseform').reduce(function (validSoFar, inputCmp) {
+            // Displays error messages for invalid fields
+            inputCmp.showHelpMessageIfInvalid();
+            return validSoFar &amp;&amp; inputCmp.get('v.validity').valid;
+        }, true);
+        // If we pass error checking, do some real work
+        if(validExpense){
+            // Create the new expense
+            let newExpense = component.get(&quot;v.newExpense&quot;);
+            console.log(&quot;Create expense: &quot; + JSON.stringify(newExpense));
+            helper.createExpense(component, newExpense);
+        }
+    }
+})
+</code></pre>
+</li>
+</ul>
+<p>When the controller needs a way to get to a child component, first set an <code>aura:id</code> on that component in markup, and then use <code>component.find(theId)</code> to get a reference to the component at runtime. <em><strong>But do not misuse this, as components are expected to be self-contained.</strong></em></p>
+<p>The Helper Functions can have any function signature as we control the calls and the definition (but it is recommended to pass the component as the first parameter to all helper functions)</p>
+<ul>
+<li><p>Example helper function that will save the expense as a list in the expense component.</p>
+<pre><code class="language-jsx">({
+    createExpense: function(component, expense) {
+        let theExpenses = component.get(&quot;v.expenses&quot;);
+        // Copy the expense to a new object
+        // THIS IS A DISGUSTING, TEMPORARY HACK
+        let newExpense = JSON.parse(JSON.stringify(expense));
+        theExpenses.push(newExpense);
+        component.set(&quot;v.expenses&quot;, theExpenses);
+    }
+})
+</code></pre>
+</li>
+</ul>
+<p>The common pattern here is <code>get =&gt; process =&gt; set</code> for most handlers and helpers.</p>
+<p>The <code>component.set()</code> does not affect the data at all if references are updates (<a class="broken-link">as it is done here</a>). It only triggers a notification that the component has changed, and therefore, the UI is updated (or &quot;re-rendered&quot;).</p>
+<h3>Solution for challenge</h3>
+<ul>
+<li><p>Code found here inside</p>
+<pre><code class="language-jsx">&lt;aura:application extends=&quot;force:slds&quot;&gt;
+    &lt;c:camping/&gt;
+    &lt;!-- &lt;c:campingListItem item=&quot;&quot;/&gt; --&gt;
+&lt;/aura:application&gt;
+</code></pre>
+<pre><code class="language-jsx">&lt;aura:component &gt;
+    &lt;!-- Camping Page Header  --&gt;
+    &lt;lightning:layout class=&quot;slds-page-header slds-page-header_object-home&quot;&gt;
+    	&lt;lightning:layoutItem&gt;
+    		&lt;lightning:icon iconName=&quot;action:goal&quot; alternativeText=&quot;My Camping List&quot;/&gt;
+    	&lt;/lightning:layoutItem&gt;
+    	&lt;lightning:layoutItem padding=&quot;horizontal-small&quot;&gt;
+    		&lt;h1&gt;Camping List&lt;/h1&gt;
+    		&lt;h2&gt;My Camping List&lt;/h2&gt;
+    	&lt;/lightning:layoutItem&gt;
+    &lt;/lightning:layout&gt;
+&lt;/aura:component&gt;
+</code></pre>
+<pre><code class="language-jsx">&lt;aura:component &gt;
+    &lt;aura:attribute name=&quot;items&quot; type=&quot;Camping_Item__c[]&quot;&gt;&lt;/aura:attribute&gt;
+    &lt;aura:attribute name=&quot;newItem&quot; type=&quot;Camping_Item__c&quot; default=&quot;{
+        'sobjectType': 'Camping_Item__c',
+        'Name': '',
+        'Price__c': 0.00,
+        'Quantity__c': 0,
+        'Packed__c': false
+    }&quot;/&gt;
+
+    &lt;!-- &lt;ol&gt;
+    	&lt;li&gt;Bug Spray&lt;/li&gt;
+        &lt;li&gt;Bear Repellant&lt;/li&gt;
+        &lt;li&gt;Goat Food&lt;/li&gt;
+    &lt;/ol&gt; --&gt;
+
+    &lt;lightning:layout class=&quot;a&quot;&gt;
+        &lt;lightning:layoutItem padding=&quot;around-small&quot; size=&quot;6&quot;&gt;
+            &lt;!-- form here --&gt;
+            &lt;div aria-labelledby=&quot;newcampingitemform&quot;&gt;
+                &lt;fieldset class=&quot;slds-box slds-theme_default slds-container_small&quot;&gt;
+                    &lt;legend id=&quot;newexpenseitemform&quot; class=&quot;slds-text-heading_small slds-p-vertical_medium&quot;&gt;Add Expense&lt;/legend&gt;
+
+                    &lt;form class=&quot;slds-form_stacked&quot;&gt;
+                        &lt;lightning:input type=&quot;text&quot; aura:id=&quot;campingitemform&quot; label=&quot;Camping Item Name&quot; name=&quot;itemName&quot; value=&quot;{!v.newItem.Name}&quot; required=&quot;true&quot;/&gt;
+                        &lt;lightning:input type=&quot;number&quot; aura:id=&quot;campingitemform&quot; label=&quot;Price&quot; name=&quot;itemPrice&quot; value=&quot;{!v.newItem.Price__c}&quot; min=&quot;0.01&quot;
+                                        formatter=&quot;currency&quot; step=&quot;0.01&quot; messageWhenRangeUnderflow=&quot;Enter a higher amount please as this is very low!&quot;/&gt;
+                        &lt;lightning:input type=&quot;number&quot; aura:id=&quot;campingitemform&quot; label=&quot;Quantity&quot; name=&quot;itemQuantity&quot; value=&quot;{!v.newItem.Quantity__c}&quot; min=&quot;1&quot;
+                                        step=&quot;1.0&quot; messageWhenRangeUnderflow=&quot;Quantity cannot be less than one!&quot; required=&quot;true&quot;/&gt;
+                        &lt;lightning:input type=&quot;checkbox&quot; aura:id=&quot;campingformitem&quot; label=&quot;Has been packed?&quot; name=&quot;itemHasBeenPacked&quot; checked=&quot;{!v.newItem.Packed__c}&quot;/&gt;
+                        &lt;lightning:button label=&quot;Create Camping Item&quot; class=&quot;slds-m-top_medium&quot; variant=&quot;brand&quot; onclick=&quot;{!c.clickCreateItem}&quot;/&gt;
+                    &lt;/form&gt;
+                &lt;/fieldset&gt;
+            &lt;/div&gt;
+        &lt;/lightning:layoutItem&gt;
+        &lt;lightning:layoutItem padding=&quot;around-small&quot;&gt;
+            &lt;aura:iteration items=&quot;{!v.items}&quot; var=&quot;item&quot;&gt;
+                &lt;c:campingListItem item=&quot;{!item}&quot;/&gt;
+            &lt;/aura:iteration&gt;
+        &lt;/lightning:layoutItem&gt;
+    &lt;/lightning:layout&gt;
+&lt;/aura:component&gt;
+</code></pre>
+<pre><code class="language-jsx">({
+    clickCreateItem : function(component, event, helper) {
+    	// Validate that the data is OK
+    	let validCampingItem = component.find('campingitemform').reduce(function (validSoFar, inputCmp) {
+            // Displays error messages for invalid fields
+            inputCmp.showHelpMessageIfInvalid();
+    		let componentIsValid = inputCmp.get('v.validity').valid;
+            return validSoFar &amp;&amp; componentIsValid;
+        }, true);
+
+    	if (validCampingItem) {
+    		let newItem = component.get(&quot;v.newItem&quot;);
+    		console.log(&quot;Creating new Camping Item \n&quot; + JSON.stringify(newItem));
+    		// helper.createItem(component, newItem);	// Commenting as the questions asks to use the helper logic in the controller itself
+
+    		// HELPER COPIED as the questions needs it to be in the controller itself
+    		console.log('Starting createItem helper');
+    		let campingItems = component.get(&quot;v.items&quot;);
+
+    		// DISGUSTING HACK FOR THE TEST. NEVER DO FOR REAL SITUATION.
+    		let newItemCopy = JSON.parse(JSON.stringify(newItem));
+    		// Add the jsonified item to the list of camping items set at attribute on the component
+    		campingItems.push(newItemCopy);
+
+    		// Trigger a re-render
+    		component.set(&quot;v.items&quot;, campingItems);
+
+    		// console.log(&quot;Camping Items after insert: \n&quot; + JSON.stringify(campingItems))
+    		console.log('Finished createItem helper');
+
+    		// Set the form to blanks
+    		component.set(
+    			&quot;v.newItem&quot;, {
+    				'sobjectType': 'Camping_Item__c',
+    				'Name': '',
+    				'Quantity__c': 0,
+    				'Price__c': 0,
+    				'Packed__c': false
+    			}
+    		)
+    	}
+    }
+})
+</code></pre>
+<pre><code class="language-jsx">({
+    createItem : function(component, newItem) {
+    	console.log('Starting createItem helper');
+    	let campingItems = component.get(&quot;v.items&quot;);
+
+    	// DISGUSTING HACK FOR THE TEST. NEVER DO FOR REAL SITUATION.
+    	let newItemCopy = JSON.parse(JSON.stringify(newItem));
+    	campingItems.push(newItemCopy);
+
+    	// Trigger a re-render
+    	component.set(&quot;v.items&quot;, campingItems);
+
+    	// Set the form to blanks
+    	component.set(
+    		&quot;v.newItem&quot;, {
+    			'sobjectType': 'Camping_Item__c',
+    			'Name': '',
+    			'Quantity__c': 0,
+    			'Price__c': 0,
+    			'Packed__c': false
+    		}
+    	)
+
+    	// console.log(&quot;Camping Items after insert: \n&quot; + JSON.stringify(campingItems))
+    	console.log('Finished createItem helper');
+    }
+})
+</code></pre>
+<pre><code class="language-jsx">&lt;aura:component&gt;
+    &lt;aura:attribute name='item' type='Camping_Item__c' required=&quot;true&quot;/&gt;
+    &lt;aura:attribute name=&quot;disabled&quot; type=&quot;boolean&quot; default=&quot;false&quot;/&gt;
+    &lt;!-- &lt;lightning:outputField  --&gt;
+
+    &lt;p&gt;Name:
+        &lt;ui:outputText value=&quot;{!v.item.Name}&quot;/&gt;
+    &lt;/p&gt;
+    &lt;p&gt;Price:
+        &lt;lightning:formattedNumber value=&quot;{! v.item.Price__c }&quot; style=&quot;currency&quot;/&gt;
+    &lt;/p&gt;
+    &lt;p&gt;Quantity:
+        &lt;lightning:formattedNumber value=&quot;{! v.item.Quantity__c }&quot; style=&quot;decimal&quot;/&gt;
+    &lt;/p&gt;
+    &lt;p&gt;{! 'Packed: ' + v.item.Packed}&lt;/p&gt;
+
+    &lt;lightning:input type=&quot;toggle&quot;
+        label=&quot;Packed?&quot;
+        name=&quot;packed&quot;
+        checked=&quot;{!v.item.Packed__c}&quot;
+    /&gt;
+
+    &lt;lightning:button
+        label=&quot;Packed!&quot;
+        onclick=&quot;{!c.packItem}&quot;
+        disabled=&quot;{!v.disabled}&quot;
+    /&gt;
+
+&lt;/aura:component&gt;
+</code></pre>
+<pre><code class="language-jsx">({
+    packItem : function(component, event, helper) {
+        component.set('v.item.Packed__c', true);
+        component.set('v.disabled', true);
+    }
+})
+</code></pre>
+</li>
+</ul>
+<h1>Connect to Salesforce with Server-Side Controllers</h1>
+<p><a class="broken-link">02. Areas/Studies/Topics/Salesforce/Main Topics/Aura Components Basics/Untitled 3.png</a></p>
+<pre><code class="language-jsx">public with sharing class ExpensesController {
+    // STERN LECTURE ABOUT WHAT'S MISSING HERE COMING SOON
+    @AuraEnabled
+    public static List&lt;Expense__c&gt; getExpenses() {
+        return [SELECT Id, Name, Amount__c, Client__c, Date__c,
+                       Reimbursed__c, CreatedDate
+                FROM Expense__c];
+    }
+}
+</code></pre>
+<ul>
+<li>The <code>@AuraEnabled</code> annotation before the <code>method</code> declaration. “Aura” is the name of the framework at the core of Lightning Components. It is used in the namespace for some of the core tags, such as <code>&lt;aura:component&gt;</code>.</li>
+<li>The <code>static</code> keyword. All <code>@AuraEnabled</code> controller methods must be static methods, and either public or global scope.</li>
+</ul>
+<pre><code class="language-jsx">// Specifying a handler (doInit()) for the &quot;init&quot; event
+&lt;aura:handler name=&quot;init&quot; action=&quot;{!c.doInit}&quot; value=&quot;{!this}&quot;/&gt;
+
+// The value=&quot;{!this}&quot; is a &quot;mandatory&quot; complicated thing
+// that I need to read about in different place
+</code></pre>
+<h2>Calling Server-side controller methods</h2>
+<pre><code class="language-jsx">// Load expenses from Salesforce
+    doInit: function(component, event, helper) {
+        // Create the action
+        let action = component.get(&quot;c.getExpenses&quot;);
+        // Add callback behavior for when response is received
+        action.setCallback(this, function(response) {
+            let state = response.getState();
+            if (state === &quot;SUCCESS&quot;) {
+                component.set(&quot;v.expenses&quot;, response.getReturnValue());
+            }
+            else {
+                console.log(&quot;Failed with state: &quot; + state);
+            }
+        });
+        // Send action off to be executed
+        $A.enqueueAction(action);
+    },
+</code></pre>
+<p><a class="broken-link">02. Areas/Studies/Topics/Salesforce/Main Topics/Aura Components Basics/c and it's many meanings</a></p>
+<p>All we need to know about <code>$A.enqueueAction(action)</code> (for now):</p>
+<ul>
+<li>It queues up the server request.</li>
+<li>As far as your controller action is concerned, that’s the end of it.</li>
+<li>You’re not guaranteed when, or if, you’ll hear back.</li>
+</ul>
+<h2>Handling the Server Response</h2>
+<h2>Apex controllers for Aura Components</h2>
+<h3>Checking Access</h3>
+<pre><code class="language-jsx">@AuraEnabled
+public static List&lt;Expense__c&gt; getExpenses() {
+    // Check to make sure all fields are accessible to this user
+    String[] fieldsToCheck = new String[] {
+        'Id', 'Name', 'Amount__c', 'Client__c', 'Date__c',
+        'Reimbursed__c', 'CreatedDate'
+    };
+    Map&lt;String,Schema.SObjectField&gt; fieldDescribeTokens =
+        Schema.SObjectType.Expense__c.fields.getMap();
+    for(String field : fieldsToCheck) {
+        if( ! fieldDescribeTokens.get(field).getDescribe().isAccessible()) {
+            throw new System.NoAccessException();
+        }
+    }
+    // OK, they're cool, let 'em through
+    return [SELECT Id, Name, Amount__c, Client__c, Date__c,
+                   Reimbursed__c, CreatedDate
+            FROM Expense__c];
+}
+</code></pre>
+<h1>Connect Components with Events</h1>
+<p>Lightning components are supposed to be self-contained. They are stand-alone elements that encapsulate all of their essential functionality. A component is not allowed to reach into another component, even a child component, and alter its internals.</p>
+<p>There are two principal ways to interact with or affect another component.</p>
+<ul>
+<li>The first way is one we’ve seen and done quite a bit of already: setting attributes on the component’s tag. A component’s public attributes constitute one part of its API.</li>
+<li>The second way to interact with a component is through <em>events</em>. Like attributes, components declare the events they send out, and the events they can handle. Like attributes, these public events constitute a part of the component’s public API. We’ve actually used and handled events already, but the events have been hiding behind some convenience features. In this unit, we’ll drag events out into the light, and create a few of our own.</li>
+</ul>
+<p>There are two types of events, component and application. Here we’re using a component event, because we want an ancestor component to catch and handle the event. An ancestor is a component “above” this one in the component hierarchy. If we wanted a “general broadcast” kind of event, where any component could receive it, we’d use an application event instead</p>
+
+    </article>
+    <footer>
+      Generated from Obsidian notes
+    </footer>
+  </div>
+</body>
+</html>

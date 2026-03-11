@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Salesforce Flow</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+:root {
+  --text: #2c2416;
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --border: #ddd5c8;
+  --accent: #8b4513;
+  --accent-hover: #6b3410;
+  --code-bg: #f0ebe3;
+  --broken-link: #b8a99a;
+  --heading-color: #3d2b1f;
+  --footer-color: #8b7d6b;
+  --max-width: 44rem;
+  --font-body: 'EB Garamond', 'Georgia', 'Times New Roman', serif;
+  --font-heading: 'EB Garamond', 'Georgia', serif;
+  --font-code: 'Menlo', 'Consolas', 'Courier New', monospace;
+  --font-size: 1.125rem;
+  --line-height: 1.8;
+}
+
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--font-size);
+      line-height: var(--line-height);
+      color: var(--text);
+      background: var(--bg);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    nav {
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--heading-color, var(--text));
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      line-height: 1.3;
+    }
+
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.2rem; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: var(--accent-hover);
+    }
+
+    a.broken-link {
+      color: var(--broken-link);
+      text-decoration: line-through;
+      cursor: not-allowed;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin: 1rem 0;
+    }
+
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    code {
+      font-family: var(--font-code);
+      font-size: 0.875em;
+    }
+
+    :not(pre) > code {
+      background: var(--code-bg);
+      padding: 0.15em 0.35em;
+      border-radius: 3px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+      font-size: 0.925rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+
+    th {
+      background: var(--code-bg);
+      font-weight: 600;
+    }
+
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.5rem 1rem;
+      border-left: 3px solid var(--accent);
+      background: var(--code-bg);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.25rem;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--footer-color, #6b7280);
+    }
+
+    /* Index page styles */
+    .page-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .page-list li {
+      margin-bottom: 0.35rem;
+    }
+
+    .folder-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .folder-group h2 {
+      font-size: 1.1rem;
+      color: var(--footer-color, #6b7280);
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="/">&#x2190; All Pages</a>
+    </nav>
+    <article>
+      <h2><strong>Choose the Right Automation Tool</strong></h2>
+<p>To sum up the differences:</p>
+<ul>
+<li>Salesforce Flow is the name of the product.</li>
+<li>Flow Builder and Process Builder are the names of the tools.</li>
+<li>Use Flow Builder to make flows; use Process Builder to refine existing processes.</li>
+</ul>
+<table>
+<thead>
+<tr>
+  <th>Use Case</th>
+  <th>Salesforce Flow Functionality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Create a guided tutorial or wizard with screens.</td>
+  <td>Flow Builder includes several out-of-the-box screen components, like text boxes, radio buttons, and file-uploads. If you need more than what’s offered, add custom Lightning components to your screens.</td>
+</tr>
+<tr>
+  <td>Set up automated tasks and processes.</td>
+  <td>Declaratively configure logic and actions for your business process with Flow Builder. If needed, you can build custom Apex code to fill any functional gaps.</td>
+</tr>
+<tr>
+  <td>Connect to external systems.</td>
+  <td>Communicate changes between your Salesforce org and your external systems with platform events.Flow Builder lets you respond to and send platform event messages. Flow Builder can also retrieve data from third-party systems with External Services.</td>
+</tr>
+<tr>
+  <td>Add automation to your pages and apps.</td>
+  <td>Make sure your behind-the-scenes processes start when the right action happens, whether that’s when records change or when users click a particular button.Once you build guided visual experiences, add them to Lightning pages, Experience Builder pages, the utility bar in your Lightning apps, and more.</td>
+</tr>
+<tr>
+  <td>Reuse what you build.</td>
+  <td>In Flow Builder, break down process logic or actions into a flow that's referenced by a Subflow element. You can reuse or reference this flow in other business processes.In Process Builder, call an autolaunched flow from a process to automate complex business processes.</td>
+</tr>
+</tbody>
+</table>
+<h3>Decision Making</h3>
+<table>
+<thead>
+<tr>
+  <th>Type of Business Process</th>
+  <th>Description</th>
+  <th>Available Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Guided visual experience</td>
+  <td>Business processes that need input from users, whether they’re employees or customers.</td>
+  <td>Flow Builder</td>
+</tr>
+<tr>
+  <td>Behind-the-scenes automation</td>
+  <td>Business processes that get all the necessary data from your Salesforce org or a connected system. In other words, user input isn’t needed.</td>
+  <td>Flow Builder (Recommended)Process Builder (Use for existing processes)Apex</td>
+</tr>
+<tr>
+  <td>Approval automation</td>
+  <td>Business processes that determine how a record, like a time-off request, gets approved by the right stakeholders.</td>
+  <td>Approvals</td>
+</tr>
+</tbody>
+</table>
+<h2><strong>Automate Simple Business Processes with Process Builder</strong></h2>
+<p>Trigger - Criteria - Actions (+ Schedule)</p>
+<table>
+<thead>
+<tr>
+  <th>Type</th>
+  <th>Process Starts When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Record Change</td>
+  <td>A record is created or edited</td>
+</tr>
+<tr>
+  <td>Invocable</td>
+  <td>It’s called by another process</td>
+</tr>
+<tr>
+  <td>Platform Event</td>
+  <td>A platform event message is received</td>
+</tr>
+</tbody>
+</table>
+<p>🚨 Safari and Edge behave horribly with Process Builder → The save button goes missing. Stick to Google Chrome for this</p>
+<p>⚠️ Read the question, stupid!! Disable the damn validation rules!</p>
+<h2><strong>Guide Users Through Your Business Processes with Flow Builder</strong></h2>
+<p>Random notes</p>
+<ol>
+<li>For Allow Multiple Files, select <strong><code>$GlobalConstant.True</code></strong> in case of file uploads</li>
+</ol>
+<ul>
+<li><strong>Add Your Flow to the Home Page - details in the trailhead</strong></li>
+</ul>
+<h3>Make Sure Your Users Can Run the Flow</h3>
+<p>To make sure that your users can run the flow, add the Run Flows user permission to a permission set or profile, and assign it to the right users. If <strong>Override default behavior and restrict access to enabled profiles or permission sets</strong> is selected for the flow, add the flow to a permission set or profile, and assign it to the right users.</p>
+<p>Only flow admins (users with the Manage Flow user permission) can run inactive flows.</p>
+<h2><strong>Customize How Records Get Approved with Approvals</strong></h2>
+<h3>Preplanning</h3>
+<table>
+<thead>
+<tr>
+  <th>In Order to...</th>
+  <th>We Need...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Track each opportunity’s discount percent</td>
+  <td>Custom field (Opportunity)</td>
+</tr>
+<tr>
+  <td>Track each opportunity’s approval status</td>
+  <td>Custom field (Opportunity)</td>
+</tr>
+<tr>
+  <td>Request approval from managers when an opportunity discount is more than 40%</td>
+  <td>Approval process (Opportunity)</td>
+</tr>
+<tr>
+  <td>Notify managers when an opportunity discount needs approval</td>
+  <td>Email template</td>
+</tr>
+<tr>
+  <td>When managers respond, update the opportunity’s approval status</td>
+  <td>Approval actions (Field Update)</td>
+</tr>
+</tbody>
+</table>
+<p>#todo</p>
+<ul>
+<li>[x]  finish the suggested stuff at the end and read the tell me more</li>
+</ul>
+
+    </article>
+    <footer>
+      Generated from Obsidian notes
+    </footer>
+  </div>
+</body>
+</html>
