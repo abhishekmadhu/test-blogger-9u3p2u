@@ -49,6 +49,35 @@
       padding: 2rem 1.5rem;
     }
 
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+    }
+
+    .top-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .top-nav a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .top-nav a:hover,
+    .top-nav a:focus-visible {
+      text-decoration: underline;
+    }
+
     h1 {
       font-family: var(--font-heading);
       color: var(--heading-color, var(--text));
@@ -132,6 +161,18 @@
 </head>
 <body>
   <div class="container">
+    <nav class="top-nav">
+      <a href="/test-blogger-9u3p2u/">Abhishek Madhu</a>
+      <ul class="top-nav-links">
+        
+        <li><a href="/test-blogger-9u3p2u/tags.html">Tags</a></li>
+        
+        <li><a href="/test-blogger-9u3p2u/recents.html">Recents</a></li>
+        
+        <li><a href="/test-blogger-9u3p2u/highlighted.html">Highlighted</a></li>
+        
+      </ul>
+    </nav>
     <h1>All Pages</h1>
     
     <div class="folder-group">

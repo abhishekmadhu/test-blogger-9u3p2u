@@ -49,20 +49,33 @@
       padding: 2rem 1.5rem;
     }
 
-    nav {
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 2rem;
       padding-bottom: 0.75rem;
       border-bottom: 1px solid var(--border);
       font-size: 0.875rem;
     }
 
-    nav a {
+    .top-nav a {
       color: var(--accent);
       text-decoration: none;
     }
 
-    nav a:hover {
+    .top-nav a:hover,
+    .top-nav a:focus-visible {
       text-decoration: underline;
+    }
+
+    .top-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -191,8 +204,17 @@
 </head>
 <body>
   <div class="container">
-    <nav>
-      <a href="/test-blogger-9u3p2u/">&#x2190; All Pages</a>
+    <nav class="top-nav">
+      <a href="/test-blogger-9u3p2u/">Abhishek Madhu</a>
+      <ul class="top-nav-links">
+        
+        <li><a href="/test-blogger-9u3p2u/tags.html">Tags</a></li>
+        
+        <li><a href="/test-blogger-9u3p2u/recents.html">Recents</a></li>
+        
+        <li><a href="/test-blogger-9u3p2u/highlighted.html">Highlighted</a></li>
+        
+      </ul>
     </nav>
     <article>
       <h2><strong>Choose the Right Automation Tool</strong></h2>
